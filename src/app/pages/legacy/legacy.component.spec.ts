@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LegacyRouteComponent } from './legacy-route.component';
+import { LegacyComponent } from './leg./legacy.component
 
-describe('LegacyRouteComponent', () => {
-  let component: LegacyRouteComponent;
-  let fixture: ComponentFixture<LegacyRouteComponent>;
+describe('LegacyComponent', () => {
+  let component: LegacyComponent;
+  let fixture: ComponentFixture<LegacyComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LegacyRouteComponent ]
+      declarations: [ LegacyComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LegacyRouteComponent);
+    fixture = TestBed.createComponent(LegacyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

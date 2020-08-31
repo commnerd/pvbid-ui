@@ -1,18 +1,29 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { LoginComponent as LoginFormComponent } from './auth/forms/login/login.component';
+import { LoginComponent as LoginPageComponent } from '@pages/login/login.component';
+import { LegacyComponent } from '@pages/legacy/legacy.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ApiModule } from '@services/api/api.module';
+import { AuthModule } from './auth/auth.module';
 import { AppComponent } from './app.component';
-import { LegacyRouteComponent } from './legacy-route/legacy-route.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LegacyRouteComponent
+    LoginFormComponent,
+    LoginPageComponent,
+    LegacyComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    ReactiveFormsModule,
+    AppRoutingModule,
+    FormsModule,
+    AuthModule,
+    ApiModule
   ],
   providers: [],
   bootstrap: [AppComponent]

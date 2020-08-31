@@ -4,11 +4,11 @@ import { PlatformLocation } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-legacy-route',
-    templateUrl: './legacy-route.component.html',
-    styleUrls: ['./legacy-route.component.scss']
+    selector: 'app-legacy',
+    templateUrl: './legacy.component.html',
+    styleUrls: ['./legacy.component.scss']
 })
-export class LegacyRouteComponent implements OnInit {
+export class LegacyComponent implements OnInit {
 
     public url: SafeResourceUrl;
 

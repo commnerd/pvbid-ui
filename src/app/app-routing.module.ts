@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { LegacyRouteComponent } from './legacy-route/legacy-route.component';
+import { LegacyComponent } from '@pages/legacy/legacy.component';
+import { LoginComponent } from '@pages/login/login.component';
 
 const routes: Routes = [
-    { path: '**', component: LegacyRouteComponent }
+    { path: 'login2', component: LoginComponent },
+    { path: '**', component: LegacyComponent }
 ];
 
 @NgModule({
