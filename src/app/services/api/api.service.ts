@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
-export abstract class ClientService {
+export abstract class ApiService {
 
   protected readonly base_url : string = environment.api_base_path
 

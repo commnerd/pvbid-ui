@@ -1,7 +1,11 @@
-import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
+// Angular imports
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { LoginService } from '../../login.service';
+// Project imports
+import { LoginResponse, LoginStatus, UserResponse } from '../../interfaces/login.interfaces';
+import { AuthService } from '../../auth.service';
 
 @Component({
   selector: 'login-form',
@@ -10,22 +14,39 @@ import { LoginService } from '../../login.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm : FormGroup;
+  public loginForm : FormGroup;
 
   constructor(
-      private service: LoginService,
-      private fb: FormBuilder
+      private authService: AuthService,
+      private fb: FormBuilder,
+      private router: Router
   ) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
         email: ['', Validators.required],
         password: ['', Validators.required]
-    })
+    });
   }
 
   onSubmit(value) {
-    this.service.login(value.email, value.password).subscribe(test => console.log(test));
+    let loginProcess = this.authService.login(value.email, value.password).subscribe((response : LoginResponse) : void => {
+        if(response.status === LoginStatus.SUCCESS) {
+            this.authService.setAuthTokens(response);
+            this.setAuthenticatedUser();
+        }
+        loginProcess.unsubscribe();
+    });
+  }
+
+  private setAuthenticatedUser() : void {
+      let userProcess = this.authService.getUser().subscribe((response : UserResponse) : void => {
+            if(response.status === LoginStatus.SUCCESS) {
+                this.authService.setAuthUser(response);
+                this.router.navigate(["dashboard"]);
+            }
+            userProcess.unsubscribe();
+      });
   }
 
 }

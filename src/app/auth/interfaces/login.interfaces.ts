@@ -8,9 +8,14 @@ export enum TokenType {
 
 export interface LoginResponse {
     access_token: string
-    data: null
+    data: Object
     expires_in: number
     refresh_token: string
     status: LoginStatus
     token_type: TokenType
+}
+
+export interface UserResponse {
+    data: Object
+    status: LoginStatus
 }

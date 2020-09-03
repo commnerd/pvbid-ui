@@ -3,8 +3,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 // Service imports
+import { CanActivateAuthenticated } from './guards/authenticated';
 import { ApiModule } from '@services/api/api.module';
-import { LoginService } from './login.service';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [],
@@ -13,7 +14,8 @@ import { LoginService } from './login.service';
     ApiModule
   ],
   providers: [
-    LoginService
+    CanActivateAuthenticated,
+    AuthService
   ]
 })
 export class AuthModule { }
